@@ -1,0 +1,21 @@
+---
+- name: Crear usuario y grupo
+  hosts: all
+
+  tasks:
+  - name: Crear un usuario simple
+    ansible.builtin.user:
+      name: usu1
+
+  - name: Crear un grupo
+    ansible.builtin.group:
+      name: grupo1
+      state: present
+
+  - name: Crear un usuario y añadirlo a un grupo
+    ansible.builtin.user:
+      name: usu2
+      group: grupo1
+      shell: /bin/bash
+      home: /home/usuario2
+...
